@@ -1,0 +1,9 @@
+@import "~bootstrap/scss/bootstrap";
+
+
+.list-group{
+  margin: 20px 0;
+  .list-group-item{
+    cursor: pointer;
+  }
+}
