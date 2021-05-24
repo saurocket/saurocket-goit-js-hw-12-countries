@@ -1,34 +1,23 @@
 import { card } from './Card';
-import { onCheckedCountry } from './onCheckedCountry';
+import { elementsList } from './ElemetnsList';
+import { pagination } from './Pagitanation';
 
 
-export const createTable = (elemets) => {
+export const createTable = (elements) => {
   const rootList= document.querySelector('#root1')
-
-
   rootList.innerHTML = null
+ if (!Array.isArray(elements)) throw ('Something wrong')
 
- if (!Array.isArray(elemets)) throw ('Something wrong')
 
-  if (elemets.length>1){
-    const arrElemetns =  elemets.map(element => {
-      return `<li class="list-group-item">${element.name}</li>`
-    }).join('')
 
-    const rootUl = document.createElement('ul')
-    rootUl.classList.add('list-group')
 
-    rootUl.innerHTML = arrElemetns
-    rootList.append(rootUl)
-
-    const listCountiest = document.querySelectorAll('#root1 .list-group-item')
-
-    listCountiest.forEach(counry => counry.addEventListener('click',
-      (e)=>onCheckedCountry(e,counry,listCountiest, elemets))
-    )
-
+  if (elements.length>1 && elements.length < 10){
+    elementsList(elements, rootList)
   }
-  if(elemets.length === 1){
-    card(elemets)
+  if (elements.length > 10){
+    pagination(elements, rootList)
+  }
+  if(elements.length === 1){
+    card(elements)
   }
 }
