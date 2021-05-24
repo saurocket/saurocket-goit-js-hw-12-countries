@@ -1,6 +1,7 @@
 import { card } from './Card';
 import { elementsList } from './ElemetnsList';
 import { pagination } from './Pagitanation';
+import { clearPaginator } from './clearPaginator';
 
 
 export const createTable = (elements) => {
@@ -12,12 +13,14 @@ export const createTable = (elements) => {
 
 
   if (elements.length>1 && elements.length < 10){
+    clearPaginator()
     elementsList(elements, rootList)
   }
   if (elements.length > 10){
     pagination(elements, rootList)
   }
   if(elements.length === 1){
+    clearPaginator()
     card(elements)
   }
 }
